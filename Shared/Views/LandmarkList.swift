@@ -12,9 +12,15 @@ struct LandmarkList: View {
         var decoder = Decoder()
         let landmarks = decoder.landmarks
 
-        List {
-            LandmarkRow(landmark: landmarks[0])
-            LandmarkRow(landmark: landmarks[1])
+        NavigationView {
+
+            List(landmarks) { landmark in
+                NavigationLink(destination: LandmarkDetail()) {
+                    LandmarkRow(landmark: landmark)
+                }
+            }
+
+            .navigationTitle("Landmarks")
         }
     }
 }
